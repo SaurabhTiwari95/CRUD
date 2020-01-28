@@ -1,27 +1,67 @@
-# CRUD
+# [CRUD](https://stackblitz.com/github/SaurabhTiwari95/CRUD)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
+## Forms in Angular
 
-## Development server
+```
+    There are two types of forms
+        - Reactive
+        - Template Driven
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Reactive Forms
 
-## Code scaffolding
+    these are more robust: they are more scalable,reusable and testable
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Template Driven Forms
 
-## Build
+    These are useful for adding a simple from to an app such as email signup form.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### [Key Differences](https://angular.io/guide/forms-overview#key-differences)
 
-## Running unit tests
+#### [Common Foundation](https://angular.io/guide/forms-overview#common-foundation)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+    Both reactive and template-driven forms share underlying building blocks.
 
-## Running end-to-end tests
+    FormControl tracks the value and validation status of an individual form control.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    FormGroup tracks the same values and status for a collection of form controls.
 
-## Further help
+    FormArray tracks the same values and status for an array of form controls.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
+
+```
+
+#### How to add reactive forms
+
+Step 1: Registering the reactive forms module
+```
+import { ReactiveFormsModule } from '@angular/forms';
+
+    @NgModule({
+    imports: [
+        // other imports ...
+        ReactiveFormsModule
+    ],
+    })
+    export class AppModule { }
+
+````
+Step 2: Generating and importing a new form control
+    ng generate component NameEditor
+    ```
+            import { Component } from '@angular/core';
+            import { FormControl } from '@angular/forms';
+
+            @Component({
+            selector: 'app-name-editor',
+            templateUrl: './name-editor.component.html',
+            styleUrls: ['./name-editor.component.css']
+        })
+        export class NameEditorComponent {
+        name = new FormControl('');
+        }
+    ```
+Step 3: Registering the control in the template
+    Now Display the content using the selector          [<app-test-name></app-test-name>]

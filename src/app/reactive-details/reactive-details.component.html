@@ -1,1 +1,22 @@
-<p>reactive-details works!</p>
+<label>
+    Name : 
+    <input type="text" [formControl] = "name">
+</label>
+<p>Value:  {{ name.value }}</p>
+<!-- the displayed value changes as we update the form control element -->
+<p>
+    <button (click)="updateName()">Update Name</button>
+</p>
+<form [formGroup]="profileForm" (ngSubmit) = "onSubmit()">
+    <label>First name
+        <input type="text" formControlName = "firstName">
+    </label>
+    <br>
+    <label>Last name
+        <input type="text" formControlName = "lastName">
+    </label>
+
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    <!-- the button is always disabled when profileForm is invalid
+    if any validation is not there then it will be enabled -->
+</form>
